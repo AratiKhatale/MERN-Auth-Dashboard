@@ -22,10 +22,10 @@ const Sidebar = () => {
       <Divider />
       <List>
         {[
-          { text: "Home", icon: <Home />, path: "/" },
-          { text: "Assessment", icon: <Assessment />, path: "/assessment" },
-          { text: "Profile", icon: <Person />, path: "/profile" },
-          { text: "Settings", icon: <Settings />, path: "/settings" },
+          { text: "Home", icon: <Home />, path: "/home" },
+          { text: "Assessment", icon: <Assessment />, path: "/home" },
+          { text: "Profile", icon: <Person />, path: "/home" },
+          { text: "Settings", icon: <Settings />, path: "/home" },
         ].map((item, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton component={Link} to={item.path}>
@@ -38,7 +38,7 @@ const Sidebar = () => {
       <Divider />
       <List>
         <ListItem disablePadding>
-          <ListItemButton component={Link} to="/logout">
+          <ListItemButton component={Link} to="/login">
             <ListItemIcon sx={{ color: "white" }}>
               <Logout />
             </ListItemIcon>

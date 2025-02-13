@@ -7,7 +7,17 @@ const Navbar = () => (
   <AppBar position="static" sx={{ bgcolor: "white", color: "black", p: 1 }}>
     <Toolbar>
       <Typography variant="h6" sx={{ flexGrow: 1 }}>ABC</Typography>
-      <Avatar alt="User" src="/user-avatar.png" sx={{ marginRight: 1 }} />
+      <Avatar
+        alt="User"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Hb5xzFZJCTW4cMqmPwsgfw-gILUV7QevvQ&s"
+        sx={{
+          width: 50,
+          height: 50,
+          marginRight: 1,
+          border: "2px solid black",
+          boxShadow: "0px 4px 10px rgba(10, 0, 0, 0.2)"
+        }}
+      />
       <Typography variant="body1">Arati Khatale</Typography>
     </Toolbar>
   </AppBar>

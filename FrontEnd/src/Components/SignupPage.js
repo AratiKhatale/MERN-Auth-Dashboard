@@ -45,8 +45,8 @@ const SignUpForm = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
-    const { name, email, password } = formData; // Extract only necessary fields
-const payload = { name, email, password };
+    const { name, email, password } = formData;
+    const payload = { name, email, password };
 
     try {
       const response = await axios.post('http://localhost:5000/api/auth/signup', payload);
@@ -62,48 +62,50 @@ const payload = { name, email, password };
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 4, p: 4, boxShadow: 3, borderRadius: 2, bgcolor: 'background.paper' }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        Welcome to ABC
-      </Typography>
-      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom>
-        Where Financial Wisdom Meets Technology
-      </Typography>
-      {error && <Alert severity="error">{error}</Alert>}
-      <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-        <TextField fullWidth label="Name" name="name" value={formData.name} onChange={handleChange} margin="normal" required />
-        <TextField fullWidth label="Mobile Number" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} margin="normal" required />
-        <TextField fullWidth label="Email" name="email" type="email" value={formData.email} onChange={handleChange} margin="normal" required />
-        <TextField fullWidth label="Nationality" name="nationality" value={formData.nationality} onChange={handleChange} margin="normal" required />
-        <TextField fullWidth label="Date of Birth (DD-MM-YYYY)" name="dob" value={formData.dob} onChange={handleChange} margin="normal" required />
-        <FormControl fullWidth margin="normal" required>
-          <InputLabel>Gender</InputLabel>
-          <Select name="gender" value={formData.gender} onChange={handleChange}>
-            <MenuItem value="">Select</MenuItem>
-            <MenuItem value="male">Male</MenuItem>
-            <MenuItem value="female">Female</MenuItem>
-            <MenuItem value="other">Other</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl fullWidth margin="normal" required>
-          <InputLabel>Occupation</InputLabel>
-          <Select name="occupation" value={formData.occupation} onChange={handleChange}>
-            <MenuItem value="">Select</MenuItem>
-            <MenuItem value="student">Student</MenuItem>
-            <MenuItem value="professional">Professional</MenuItem>
-            <MenuItem value="business">Business</MenuItem>
-          </Select>
-        </FormControl>
-        <TextField fullWidth label="Password" name="password" type="password" value={formData.password} onChange={handleChange} margin="normal" required />
-        <TextField fullWidth label="Re-enter Password" name="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleChange} margin="normal" required />
-        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, p: 1.5 }} disabled={loading}>
-          {loading ? <CircularProgress size={24} /> : 'Create Account'}
-        </Button>
-        <Typography variant="body2" align="center" color="text.secondary">
-          Already have an account? <a href="/login">Log in</a>
+    <div className="signup-container"> 
+      <Container maxWidth="sm" sx={{ mt: 4, p: 4, boxShadow: 3, borderRadius: 2, bgcolor: 'background.paper' }}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Welcome to ABC
         </Typography>
-      </Box>
-    </Container>
+        <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom>
+          Where Financial Wisdom Meets Technology
+        </Typography>
+        {error && <Alert severity="error">{error}</Alert>}
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <TextField fullWidth label="Name" name="name" value={formData.name} onChange={handleChange} margin="normal" required />
+          <TextField fullWidth label="Mobile Number" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} margin="normal" required />
+          <TextField fullWidth label="Email" name="email" type="email" value={formData.email} onChange={handleChange} margin="normal" required />
+          <TextField fullWidth label="Nationality" name="nationality" value={formData.nationality} onChange={handleChange} margin="normal" required />
+          <TextField fullWidth label="Date of Birth (DD-MM-YYYY)" name="dob" value={formData.dob} onChange={handleChange} margin="normal" required />
+          <FormControl fullWidth margin="normal" required>
+            <InputLabel>Gender</InputLabel>
+            <Select name="gender" value={formData.gender} onChange={handleChange}>
+              <MenuItem value="">Select</MenuItem>
+              <MenuItem value="male">Male</MenuItem>
+              <MenuItem value="female">Female</MenuItem>
+              <MenuItem value="other">Other</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl fullWidth margin="normal" required>
+            <InputLabel>Occupation</InputLabel>
+            <Select name="occupation" value={formData.occupation} onChange={handleChange}>
+              <MenuItem value="">Select</MenuItem>
+              <MenuItem value="student">Student</MenuItem>
+              <MenuItem value="professional">Professional</MenuItem>
+              <MenuItem value="business">Business</MenuItem>
+            </Select>
+          </FormControl>
+          <TextField fullWidth label="Password" name="password" type="password" value={formData.password} onChange={handleChange} margin="normal" required />
+          <TextField fullWidth label="Re-enter Password" name="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleChange} margin="normal" required />
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, p: 1.5 }} disabled={loading}>
+            {loading ? <CircularProgress size={24} /> : 'Create Account'}
+          </Button>
+          <Typography variant="body2" align="center" color="text.secondary">
+            Already have an account? <a href="/login">Log in</a>
+          </Typography>
+        </Box>
+      </Container>
+    </div>
   );
 };
 

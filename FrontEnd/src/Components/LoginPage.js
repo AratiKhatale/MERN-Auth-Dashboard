@@ -39,7 +39,6 @@ const LoginPage = () => {
   return (
     <Box
       sx={{
-        background: 'url("https://source.unsplash.com/1600x900/?finance,technology") center/cover',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
