@@ -1,0 +1,361 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* login page */
+/* Background styling */
+.login-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: url('https://source.unsplash.com/1600x900/?finance,technology') no-repeat center;
+  background-size: cover;
+}
+
+/* Form box */
+.login-form {
+  background: white;
+  padding: 40px;
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titles */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #002855;
+}
+
+.title span {
+  color: #0a3d62;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.login-heading {
+  font-size: 18px;
+  margin: 20px 0;
+  color: #002855;
+}
+
+/* Labels */
+label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+  display: block;
+}
+
+.required {
+  color: red;
+}
+
+/* Input fields */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Password field with toggle */
+.password-container {
+  position: relative;
+}
+
+.show-password {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #0a3d62;
+}
+
+/* Login button */
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #002855;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.login-btn:hover {
+  background-color: #0a3d62;
+}
+
+/* Forgot password link */
+.forgot-password {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #ff6600;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Home Page */
+/* Navbar */
+.navbar {
+  background-color: #002855;
+}
+
+.logo {
+  flex-grow: 1;
+  font-weight: bold;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.hero-heading {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #ff6600;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  width: fit-content;
+  text-align: left;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.features-list svg {
+  color: #28a745;
+  margin-right: 10px;
+}
+
+.start-btn {
+  margin-top: 15px;
+}
+
+/* Steps Section */
+.steps-section {
+  margin: 40px 0;
+}
+
+.step-card {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.step-icon {
+  background-color: #ff6600;
+  margin: 0 auto 10px;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.step-text {
+  font-size: 14px;
+  color: #002855;
+}
+
+.step-desc {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Features Section */
+.features-container {
+  margin: 40px 0;
+}
+
+.features-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.feature-icon {
+  background-color: #0a3d62;
+  margin: 0 auto 10px;
+}
+
+.feature-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.feature-desc {
+  font-size: 14px;
+  color: #666;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.signup-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.signup-form .title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.signup-form .title span {
+  color: #007bff;
+}
+
+.signup-form .subtitle {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-form .signup-heading {
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-form .password-container {
+  position: relative;
+}
+
+.signup-form .show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #007bff;
+}
+
+.signup-form .signup-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signup-form .signup-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.signup-form .login-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signup-form .login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
