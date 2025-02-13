@@ -1,56 +1,22 @@
-// import React, { useState } from "react";
-
-// const LoginPage = () => {
-//   const [passwordVisible, setPasswordVisible] = useState(false);
-
-//   return (
-//     <div className="login-container">
-//       <div className="login-form">
-//         <h2 className="title">
-//           Welcome to <span>ABC</span>
-//         </h2>
-//         <p className="subtitle">Where Financial Wisdom Meets Technology</p>
-//         <h3 className="login-heading">Log in with your credentials</h3>
-
-//         <label>Username <span className="required">*</span></label>
-//         <input type="email" placeholder="Enter your email" required />
-
-//         <label>Password <span className="required">*</span></label>
-//         <div className="password-container">
-//           <input type={passwordVisible ? "text" : "password"} placeholder="Enter password" required />
-//           <span className="show-password" onClick={() => setPasswordVisible(!passwordVisible)}>
-//             {passwordVisible ? "Hide" : "Show"}
-//           </span>
-//         </div>
-
-//         <button className="login-btn">Log in</button>
-
-//         <a href="#" className="forgot-password">Forgot Password</a>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default LoginPage;
-
-
 import React, { useState } from 'react';
+import { TextField, Button, Typography, Container, Paper, CircularProgress, Box, IconButton, InputAdornment } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Loader from './Loader';
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: { email: '', password: '' },
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid email address').required('Email is required'),
-      password: Yup.string().required('Password is required'),
+      password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
     }),
     onSubmit: async (values) => {
       setLoading(true);
@@ -63,7 +29,7 @@ const LoginPage = () => {
           navigate('/home');
         }
       } catch (err) {
-        setError(err.response?.data?.msg || 'Login failed');
+        setError(err.response?.data?.msg || 'Login failed. Please try again.');
       } finally {
         setLoading(false);
       }
@@ -71,31 +37,77 @@ const LoginPage = () => {
   });
 
   return (
-    <div>
-      <h1>Login</h1>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <form onSubmit={formik.handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        {formik.errors.email && <div>{formik.errors.email}</div>}
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        {formik.errors.password && <div>{formik.errors.password}</div>}
-        <button type="submit" disabled={loading}>
-          {loading ? <Loader /> : 'Login'}
-        </button>
-      </form>
-    </div>
+    <Box
+      sx={{
+        background: 'url("https://source.unsplash.com/1600x900/?finance,technology") center/cover',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        padding: 2,
+      }}
+    >
+      <Container maxWidth="xs">
+        <Paper elevation={6} sx={{ padding: 4, borderRadius: 3, textAlign: 'center' }}>
+          <Typography variant="h4" fontWeight="bold" gutterBottom color="primary">
+            Welcome to ABC
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Log in with your credentials
+          </Typography>
+          {error && <Typography color="error" sx={{ mt: 2 }}>{error}</Typography>}
+          
+          <form onSubmit={formik.handleSubmit}>
+            <TextField
+              fullWidth
+              margin="normal"
+              label="Email"
+              name="email"
+              variant="outlined"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              label="Password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              type="submit"
+              sx={{ mt: 3, py: 1.5 }}
+              disabled={loading}
+            >
+              {loading ? <CircularProgress size={24} color="inherit" /> : 'Log In'}
+            </Button>
+          </form>
+
+          <Typography variant="body2" sx={{ mt: 2 }}>
+            <a href="/forgot-password" style={{ textDecoration: 'none', color: '#f57c00' }}>Forgot Password?</a>
+          </Typography>
+        </Paper>
+      </Container>
+    </Box>
   );
 };
 
